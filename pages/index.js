@@ -1,17 +1,44 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Link from 'next/link'
 
-const inter = Inter({ subsets: ['latin'] })
+
+const PokemonItem = ({ pokemon }) => {
+  const id = pokemon.url.split('/').filter(x => x).pop()
+  return(
+    <tr>
+      <td>{ id }</td>
+      <td>
+        <Link href={`pokemones/${id}`}>{ pokemon.name }</Link>
+      </td>
+    </tr>
+  )
+}
+
+const PokemonesList = ({ pokemones }) => {
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+        </tr>
+      </thead>
+      <tbody>
+        {pokemones.map(pokemon => 
+          <PokemonItem pokemon={pokemon} key={pokemon.name}></PokemonItem>
+        )}
+      </tbody>
+    </table>
+  )
+}
 
 export default function Pokemones({ pokemones }) {
 
-  console.log(`DATA: ${pokemones}`)
+  console.log([pokemones])
   
   return (
     <main>
-      <p>Pokemones {pokemones}</p>
+      <p>Pokemones</p>
+      <PokemonesList pokemones={pokemones}></PokemonesList>
     </main>
   )
 }
