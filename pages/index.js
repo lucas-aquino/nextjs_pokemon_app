@@ -1,45 +1,48 @@
+import PokemonesList from '@/components/PokemonesList'
+import { styled } from 'styled-components'
 import Link from 'next/link'
 
 
-const PokemonItem = ({ pokemon }) => {
-  const id = pokemon.url.split('/').filter(x => x).pop()
-  return(
-    <tr>
-      <td>{ id }</td>
-      <td>
-        <Link href={`pokemones/${id}`}>{ pokemon.name }</Link>
-      </td>
-    </tr>
+const Container = styled.main`
+  background-color: #1A1A2E;
+  min-height: 100vh;
+`
+const Nav = styled.nav`
+  padding: 20px 30px;
+  background-color: #16213E;
+`
+
+const PageTitle = styled.h1`
+  font-family: 'Josefin Sans', sans-serif;
+  color: #E94560;
+  user-select: none;
+`
+
+const HomeLink = styled(Link)`
+  text-decoration: none;
+  color: #E94560;
+`
+
+const Navbar = () => {
+  return (
+    <Nav>
+      <PageTitle><HomeLink href={'/'}>lucas-aquino's Pokemon App</HomeLink></PageTitle>
+    </Nav>
   )
 }
 
-const PokemonesList = ({ pokemones }) => {
-  return (
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Nombre</th>
-        </tr>
-      </thead>
-      <tbody>
-        {pokemones.map(pokemon => 
-          <PokemonItem pokemon={pokemon} key={pokemon.name}></PokemonItem>
-        )}
-      </tbody>
-    </table>
-  )
-}
+const Content = styled.div`
+
+`
 
 export default function Pokemones({ pokemones }) {
-
-  console.log([pokemones])
-  
   return (
-    <main>
-      <p>Pokemones</p>
-      <PokemonesList pokemones={pokemones}></PokemonesList>
-    </main>
+    <Container>
+      <Navbar></Navbar>
+      <Content>
+        <PokemonesList pokemones={pokemones}></PokemonesList>
+      </Content>
+    </Container>
   )
 }
 
