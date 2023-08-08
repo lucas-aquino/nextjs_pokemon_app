@@ -1,30 +1,50 @@
-import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { styled } from "styled-components"
+import Layout from "../layout"
+import Content from "@/components/Content"
+import Card from "@/components/Card"
 
-const Card = styled.div`
+const CardContainer = styled.div`
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+
+`
+
+const BackToHomeLink = styled(Link)`
+  background-color: #E94560;
+  padding: 15px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  color: #fff;
   
+  &:hover {
+    background-color: #ee2b4b;
+  }
 `
 
 const Pokemon = ({ data }) => {
   const router = useRouter()
 
   if (router.isFallback) {
-    return <p>Cargando...</p>
+    return (
+      <Layout>
+        <p>Cargando...</p>
+      </Layout>
+    )
   }
 
   return (
-    <div>
-      <Card>
-        <div className='card-content'>
-          <Image className='pokemon-image' src={ data.sprites.front_default } width={250} height={250}></Image>
-          <div className='pokemon-name'>{ data.name }</div>
-          <div className='card-description'></div>
-        </div>
-      </Card>
-      <Link href={'/'}>Volver al inicio</Link>
-    </div>
+    <Layout>
+      <Content>
+        <CardContainer>
+          <Card data={data}>
+          </Card>
+        </CardContainer>
+        <BackToHomeLink href={'/'}>Volver</BackToHomeLink>
+      </Content>
+    </Layout>
   )
 }
 

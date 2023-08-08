@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 const PokemonItem = ({ pokemon }) => {
   const id = pokemon.url.split('/').filter(x => x).pop()
+  
   return(
     <tr>
       <td>{ id }</td>

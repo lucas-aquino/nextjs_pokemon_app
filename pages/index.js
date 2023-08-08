@@ -1,53 +1,26 @@
 import PokemonesList from '@/components/PokemonesList'
 import { styled } from 'styled-components'
-import Link from 'next/link'
+import Content from '@/components/Content'
 
-
-const Container = styled.main`
-  background-color: #1A1A2E;
-  min-height: 100vh;
-`
-const Nav = styled.nav`
-  padding: 20px 30px;
-  background-color: #16213E;
-`
+import Layout from './layout'
 
 const PageTitle = styled.h1`
-  font-family: 'Josefin Sans', sans-serif;
-  color: #E94560;
-  user-select: none;
-`
-
-const HomeLink = styled(Link)`
-  text-decoration: none;
-  color: #E94560;
-`
-
-const Navbar = () => {
-  return (
-    <Nav>
-      <PageTitle><HomeLink href={'/'}>lucas-aquino's Pokemon App</HomeLink></PageTitle>
-    </Nav>
-  )
-}
-
-const Content = styled.div`
-
+  margin: 25px 0px;
 `
 
 export default function Pokemones({ pokemones }) {
   return (
-    <Container>
-      <Navbar></Navbar>
+    <Layout>
       <Content>
+        <PageTitle>Lista de Pokemones</PageTitle>
         <PokemonesList pokemones={pokemones}></PokemonesList>
       </Content>
-    </Container>
+    </Layout>
   )
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=151')
+  const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
   const data = await res.json()
   
   return {

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=Josefin+Sans:wght@500&family=Roboto:wght@100;300&family=Unica+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=Josefin+Sans:wght@500&family=Roboto:wght@100;300&family=Sen:wght@700&family=Unica+One&display=swap');
 
 html, body, * {
   padding: 0;
@@ -7,4 +7,11 @@ html, body, * {
 
 body {
   color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-smooth: always;
+}
+
+#nada {
+  background-color: #ee2b4b;
 }
