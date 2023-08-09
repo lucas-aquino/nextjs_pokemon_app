@@ -12,7 +12,7 @@ export default function Pokemones({ pokemones }) {
   return (
     <Layout>
       <Content>
-        <PageTitle>Lista de Pokemones</PageTitle>
+        <PageTitle data-testid='title'>Lista de Pokemones</PageTitle>
         <PokemonesList pokemones={pokemones}></PokemonesList>
       </Content>
     </Layout>

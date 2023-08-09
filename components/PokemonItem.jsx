@@ -6,8 +6,8 @@ const PokemonItem = ({ pokemon }) => {
   return(
     <tr>
       <td>{ id }</td>
-      <td>
-        <Link href={`pokemones/${id}`}>{ pokemon.name }</Link>
+      <td data-testid={id}>
+        <Link href={`pokemones/${id}`} >{ pokemon.name }</Link>
       </td>
     </tr>
   )
